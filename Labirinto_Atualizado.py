@@ -1,3 +1,4 @@
+
 """Este programa Python é usado para resolver um labirinto e encontrar o caminho do início ao fim. 
 O programa começa limpando a tela. Em seguida, uma classe labirinto é criada com os seguintes métodos:"""
 
