@@ -10,24 +10,24 @@ sleep(3)
 class Labirinto:
     def __init__(self, labirinto_map):
         """Este método inicializa o labirinto, definindo as variáveis 
-        labirinto_map, start, end, linha, coluna, visitou, pilha e caminho."""
+        labirinto_map, start, exit, linha, coluna, visitou, pilha e caminho."""
         self.labirinto_map = labirinto_map
         self.start = None
-        self.end = None
+        self.exit = None
         self.linha = len(labirinto_map)
         self.coluna = len(labirinto_map[0])
         self.visitou = [[False for j in range(self.coluna)] for i in range(self.linha)]
         self.pilha = []
         self.caminho = {}
 
-    def find_start_end(self):
+    def find_start_exit(self):
         """Este método encontra as coordenadas dos pontos inicial e final do labirinto."""
         for i in range(self.linha):
             for j in range(self.coluna):
                 if self.labirinto_map[i][j] == 'S':
                     self.start = (i, j)
                 elif self.labirinto_map[i][j] == 'E':
-                    self.end = (i, j)
+                    self.exit = (i, j)
 
     def is_valid(self, x, y):
         """Este método verifica se as coordenadas fornecidas são válidas e se a célula naquele 
@@ -44,15 +44,16 @@ class Labirinto:
         ver se é válido. Se for válido, o algoritmo continua até aquele ponto e verifica seus vizinhos. 
         Isso continua até que o ponto final seja alcançado ou o algoritmo não consiga mais encontrar vizinhos válidos.
         """
-        self.find_start_end()
+        self.find_start_exit()
         self.pilha.append(self.start)
         self.visitou[self.start[0]][self.start[1]] = True
         self.caminho[self.start] = None
 
         while len(self.pilha) > 0:
             current = self.pilha.pop()
-            if current == self.end:
+            if current == self.exit:
                 print("Saida encontrada\n")
+                sleep(3)
                 self.update_labirinto(current)
                 self.print_caminho()
                 return
@@ -70,9 +71,10 @@ class Labirinto:
     def print_caminho(self):
         """Este método imprime as coordenadas do caminho percorrido do ponto inicial ao ponto final. 
         Ele também anexa as coordenadas a um arquivo chamado "caminho.txt"."""
+
         arquivo = open("caminho.txt", "a")
         arquivo.write("COORDENADAS\n")
-        current = self.end
+        current = self.exit
         while current:
             x, y = current
             #print(f"({x}, {y})^\n", end="")
@@ -84,11 +86,14 @@ class Labirinto:
         """Este método atualiza o mapa do labirinto alterando a célula nas coordenadas fornecidas para 'M'. 
         Em seguida, imprime o mapa do labirinto, com um atraso de 1 segundo."""
 
+        print("Labirinto em execução\n")
+
         x, y = current
         self.labirinto_map[x][y] = 'M'
+        
         for i in self.labirinto_map:
-            print(i)
-        sleep(0.7)
+            print("  ".join(i))
+        sleep(0.5)
         os.system('cls')
 
 labirinto_map = [
@@ -110,4 +115,4 @@ labirinto_map = [
 
 labirinto = Labirinto(labirinto_map)
 labirinto.find_exit()
-sleep(3)
+

@@ -15,7 +15,7 @@ class Labirinto:
                 elif labirinto[i][j] == "E":
                     self.end = (i, j)
 
-    def pilha(self):
+    def pilha_resolver(self):
         self.pilha.append(self.start)
         while self.pilha:
             atual = self.pilha.pop()
@@ -75,6 +75,6 @@ labirinto = [
 ]
 
 labirinto = Labirinto(labirinto)
-labirinto.pilha()
+labirinto.pilha_resolver()
 
 print("\nLabirinto Finalizado\n")
