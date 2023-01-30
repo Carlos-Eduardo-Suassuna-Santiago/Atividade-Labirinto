@@ -20,7 +20,7 @@ class Labirinto:
         self.pilha = []
         self.caminho = {}
 
-    def find_start_exit(self):
+    def achar_inicio_fim(self):
         """Este método encontra as coordenadas dos pontos inicial e final do labirinto."""
         for i in range(self.linha):
             for j in range(self.coluna):
@@ -29,7 +29,7 @@ class Labirinto:
                 elif self.labirinto_map[i][j] == 'E':
                     self.exit = (i, j)
 
-    def is_valid(self, x, y):
+    def validacao(self, x, y):
         """Este método verifica se as coordenadas fornecidas são válidas e se a célula naquele 
         local não é uma parede ou já foi visitada."""
         if x < 0 or x >= self.linha or y < 0 or y >= self.coluna:
@@ -38,33 +38,33 @@ class Labirinto:
             return False
         return True
 
-    def find_exit(self):
+    def achar_saida(self):
         """Este método encontra a saída do labirinto usando um algoritmo Depth First Search (DFS). 
         O algoritmo começa no ponto inicial e, em seguida, verifica cada um de seus vizinhos para 
         ver se é válido. Se for válido, o algoritmo continua até aquele ponto e verifica seus vizinhos. 
         Isso continua até que o ponto final seja alcançado ou o algoritmo não consiga mais encontrar vizinhos válidos.
         """
-        self.find_start_exit()
+        self.achar_inicio_fim()
         self.pilha.append(self.start)
         self.visitou[self.start[0]][self.start[1]] = True
         self.caminho[self.start] = None
 
         while len(self.pilha) > 0:
-            current = self.pilha.pop()
-            if current == self.exit:
+            atual = self.pilha.pop()
+            if atual == self.exit:
                 print("Saida encontrada\n")
                 sleep(3)
-                self.update_labirinto(current)
+                self.atualizar_labirinto(atual)
                 self.print_caminho()
                 return
             for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                x = current[0] + dx
-                y = current[1] + dy
-                if self.is_valid(x, y):
+                x = atual[0] + dx
+                y = atual[1] + dy
+                if self.validacao(x, y):
                     self.pilha.append((x, y))
                     self.visitou[x][y] = True
-                    self.caminho[(x, y)] = current
-                    self.update_labirinto((x, y))
+                    self.caminho[(x, y)] = atual
+                    self.atualizar_labirinto((x, y))
 
         print("Saida não encontrada\n")
 
@@ -74,21 +74,21 @@ class Labirinto:
 
         arquivo = open("caminho.txt", "a")
         arquivo.write("COORDENADAS\n")
-        current = self.exit
-        while current:
-            x, y = current
+        atual = self.exit
+        while atual:
+            x, y = atual
             #print(f"({x}, {y})^\n", end="")
-            current = self.caminho[current]
+            atual = self.caminho[atual]
             arquivo = open("caminho.txt", "a")
             arquivo.write(f"\n({x}, {y})^")
 
-    def update_labirinto(self, current):
+    def atualizar_labirinto(self, atual):
         """Este método atualiza o mapa do labirinto alterando a célula nas coordenadas fornecidas para 'M'. 
         Em seguida, imprime o mapa do labirinto, com um atraso de 1 segundo."""
 
         print("Labirinto em execução\n")
 
-        x, y = current
+        x, y = atual
         self.labirinto_map[x][y] = 'M'
         
         for i in self.labirinto_map:
@@ -114,5 +114,5 @@ labirinto_map = [
 ]
 
 labirinto = Labirinto(labirinto_map)
-labirinto.find_exit()
+labirinto.achar_saida()
 
