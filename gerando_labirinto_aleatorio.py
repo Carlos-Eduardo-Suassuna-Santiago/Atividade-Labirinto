@@ -1,5 +1,7 @@
 import random
+import os 
 
+os.system('cls')
 def gera_labirinto(linhas, colunas):
     labirinto = []
     for i in range(linhas):
@@ -26,5 +28,5 @@ def imprime_labirinto(labirinto_map):
     for linha in labirinto_map:
         print(" ".join(linha))
 
-labirinto = gera_labirinto(10, 10)
+labirinto = gera_labirinto(30, 30)
 imprime_labirinto(labirinto)

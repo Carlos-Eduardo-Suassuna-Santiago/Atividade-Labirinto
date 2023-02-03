@@ -4,35 +4,53 @@ import pygame
 pygame.init()
 
 # Definindo tamanho da tela
-screen = pygame.display.set_mode((600, 400))
-
-# Define a cor de fundo da tela
-background_color = (255, 255, 255)
+screen = pygame.display.set_mode((240, 560))
 
 # Define a cor das paredes
-wall_color = (0, 0, 0)
+wall_color = (0, 0, 255)
 
 # Define a cor do caminho
 path_color = (255, 255, 255)
 
 # Carrega a matriz que representa o labirinto
-maze = [
-    [1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1]
+labirinto_map = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
+    [1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1],
+    [1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+    [1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1],
+    [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1],
+    [1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1],
+    [1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
+    [1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1],
+    [1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1],
+    [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+    [1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1],
+    [1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1],
+    [1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
 # Desenha o labirinto na tela
-for i in range(len(maze)):
-    for j in range(len(maze[i])):
-        if maze[i][j] == 1:
-            pygame.draw.rect(screen, wall_color, (j*60, i*60, 60, 60))
+for i in range(len(labirinto_map)):
+    for j in range(len(labirinto_map[i])):
+        if labirinto_map[i][j] == 1:
+            pygame.draw.rect(screen, wall_color, (j*20, i*20, 20, 20))
         else:
-            pygame.draw.rect(screen, path_color, (j*60, i*60, 60, 60))
+            pygame.draw.rect(screen, path_color, (j*20, i*20, 20, 20))
 
 # Atualiza a tela
 pygame.display.update()
