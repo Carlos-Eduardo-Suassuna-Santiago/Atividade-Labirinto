@@ -2,7 +2,8 @@ import os
 from time import sleep
 
 # Define o labirinto como uma matriz
-maze = [    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+maze = [    
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
     [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
@@ -62,6 +63,7 @@ while stack:
     os.system("cls")
 
 # Verifica se o caminho foi encontrado ou não
+sleep(2)
 if path[-1] == end:
     print("Caminho encontrado: ", path)
 else:
