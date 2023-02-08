@@ -92,7 +92,7 @@ class Labirinto:
         
         for i in self.labirinto_map:
             print("  ".join(i))
-        sleep(0.3)
+        sleep(0.1)
         os.system('cls')
 
 labirinto_map = [
