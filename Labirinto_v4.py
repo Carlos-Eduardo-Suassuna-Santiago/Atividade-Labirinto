@@ -310,21 +310,21 @@ while opcao == "s":
             start = True
             while 1:
                 os.system("cls")
-                print(Fore.YELLOW +"Obrigado por utilizar nosso software\n"+ Style.RESET_ALL)
+                print(Fore.YELLOW +"                  Obrigado pela atenção\n"+ Style.RESET_ALL)
                 print("""
-                                  (\__/)
-                                 (='.'=) 
-                                 (\___/)   ...
-                                 (")_(")../
+                         (\__/)
+                        (='.'=) 
+                        (\___/)   ...
+                        (")_(")../
                 """)
                 sleep(0.1)
                 os.system('cls')
-                print(Fore.YELLOW +"Obrigado por utilizar nosso software\n"+ Style.RESET_ALL)
+                print(Fore.YELLOW +"                  Obrigado pela atenção\n"+ Style.RESET_ALL)
                 print("""
-                                     (\__/)
-                                     (='.'=) 
-                               ...   (\___/)
-                                  \..(")_(")
+                           (\__/)
+                           (='.'=) 
+                    ...    (\___/)
+                        \..(")_(")
                 """)
                 sleep(0.1)
                 os.system('cls')
