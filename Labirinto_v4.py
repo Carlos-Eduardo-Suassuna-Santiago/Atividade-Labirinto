@@ -134,7 +134,7 @@ while opcao == "s":
     while start == False:
         if kb.is_pressed('s'):
             start = True
-            print(Fore.YELLOW +"De qual Labirinto você deseja? [1] / [2]: "+ Style.RESET_ALL)
+            print(Fore.YELLOW +"Escolha o labirinto [1] [2]: "+ Style.RESET_ALL)
             print("\n")
 
             while mapa == False:
@@ -279,7 +279,7 @@ while opcao == "s":
         elif kb.is_pressed('i'):
             start = True
             pygame.mixer.music.set_volume(0.30)#controlar o volume do meu audio
-            pygame.mixer.music.load('musicas/informacoes/informacoes.mp3')
+            pygame.mixer.music.load('musicas/exit.mp3')
             pygame.mixer.music.play(-1)
             os.system("cls")
             print(Fore.YELLOW +"""
@@ -305,7 +305,7 @@ while opcao == "s":
                     os.system("cls")
         elif kb.is_pressed('e'):
             pygame.mixer.music.set_volume(0.30)#controlar o volume do meu audio
-            pygame.mixer.music.load('musicas/exit.mp3')
+            pygame.mixer.music.load('musicas/informacoes/informacoes.mp3')
             pygame.mixer.music.play()
             start = True
             while 1:
